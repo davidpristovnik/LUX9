@@ -1,0 +1,409 @@
+Archive member included because of file (symbol)
+
+/home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/libgcc.a(_thumb1_case_uqi.o)
+                              obj/sram_pio.o (__gnu_thumb1_case_uqi)
+/home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/libgcc.a(_udivsi3.o)
+                              obj/sram_dbgu.o (__aeabi_uidiv)
+/home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/libgcc.a(_dvmd_tls.o)
+                              /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/libgcc.a(_udivsi3.o) (__aeabi_idiv0)
+
+Discarded input sections
+
+ .text          0x00000000        0x0 /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/crti.o
+ .data          0x00000000        0x0 /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/crti.o
+ .bss           0x00000000        0x0 /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/crti.o
+ .init          0x00000000        0xc /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/crti.o
+ .fini          0x00000000        0xc /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/crti.o
+ .text          0x00000000       0x50 /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/crtbegin.o
+ .data          0x00000000        0x4 /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/crtbegin.o
+ .bss           0x00000000        0x1 /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/crtbegin.o
+ .init_array    0x00000000        0x4 /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/crtbegin.o
+ .fini_array    0x00000000        0x4 /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/crtbegin.o
+ .jcr           0x00000000        0x0 /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/crtbegin.o
+ .data          0x00000000        0x0 obj/sram_isp_cstartup.o
+ .bss           0x00000000        0x0 obj/sram_isp_cstartup.o
+ .text          0x00000000        0x0 obj/sram_main.o
+ .data          0x00000000        0x0 obj/sram_main.o
+ .bss           0x00000000        0x0 obj/sram_main.o
+ .text          0x00000000        0x0 obj/sram_board_memories.o
+ .data          0x00000000        0x0 obj/sram_board_memories.o
+ .bss           0x00000000        0x0 obj/sram_board_memories.o
+ .text.BOARD_RemapRom
+                0x00000000        0xc obj/sram_board_memories.o
+ .text.BOARD_ConfigureSdram48MHz
+                0x00000000       0xe8 obj/sram_board_memories.o
+ .text.BOARD_ConfigureNandFlash
+                0x00000000       0x50 obj/sram_board_memories.o
+ .text.BOARD_ConfigureNandFlash48MHz
+                0x00000000       0x50 obj/sram_board_memories.o
+ .text.BOARD_ConfigureNorFlash
+                0x00000000       0x4c obj/sram_board_memories.o
+ .text.BOARD_ConfigureNorFlash48MHz
+                0x00000000       0x4c obj/sram_board_memories.o
+ .text          0x00000000        0x0 obj/sram_board_lowlevel.o
+ .data          0x00000000        0x0 obj/sram_board_lowlevel.o
+ .bss           0x00000000        0x0 obj/sram_board_lowlevel.o
+ .text          0x00000000        0x0 obj/sram_dbgu.o
+ .data          0x00000000        0x0 obj/sram_dbgu.o
+ .bss           0x00000000        0x0 obj/sram_dbgu.o
+ .text.DBGU_IsRxReady
+                0x00000000       0x10 obj/sram_dbgu.o
+ .text.DBGU_GetChar
+                0x00000000       0x18 obj/sram_dbgu.o
+ .text          0x00000000        0x0 obj/sram_pio.o
+ .data          0x00000000        0x0 obj/sram_pio.o
+ .bss           0x00000000        0x0 obj/sram_pio.o
+ .text.PIO_Set  0x00000000        0x8 obj/sram_pio.o
+ .text.PIO_Clear
+                0x00000000        0x8 obj/sram_pio.o
+ .text.PIO_Get  0x00000000       0x24 obj/sram_pio.o
+ .text.PIO_GetOutputDataStatus
+                0x00000000        0xe obj/sram_pio.o
+ .text          0x00000000        0x0 obj/sram_cp15.o
+ .data          0x00000000        0x0 obj/sram_cp15.o
+ .bss           0x00000000        0x0 obj/sram_cp15.o
+ .text.CP15_IsIcacheEnabled
+                0x00000000       0x1c obj/sram_cp15.o
+ .text.CP15_EnableIcache
+                0x00000000       0x54 obj/sram_cp15.o
+ .text.CP15_DisableIcache
+                0x00000000       0x58 obj/sram_cp15.o
+ .text.CP15_IsMMUEnabled
+                0x00000000       0x1c obj/sram_cp15.o
+ .text.CP15_EnableMMU
+                0x00000000       0x54 obj/sram_cp15.o
+ .text.CP15_DisableMMU
+                0x00000000       0x54 obj/sram_cp15.o
+ .text.CP15_IsDcacheEnabled
+                0x00000000       0x1c obj/sram_cp15.o
+ .text.CP15_EnableDcache
+                0x00000000       0x70 obj/sram_cp15.o
+ .text.CP15_DisableDcache
+                0x00000000       0x54 obj/sram_cp15.o
+ .text.CP15_LockIcache
+                0x00000000       0x34 obj/sram_cp15.o
+ .text.CP15_LockDcache
+                0x00000000       0x34 obj/sram_cp15.o
+ .text.CP15_ShutdownDcache
+                0x00000000       0x34 obj/sram_cp15.o
+ .rodata.str1.1
+                0x00000000      0x16e obj/sram_cp15.o
+ .text          0x00000000        0x0 obj/sram_printf.o
+ .data          0x00000000        0x0 obj/sram_printf.o
+ .bss           0x00000000        0x0 obj/sram_printf.o
+ .text.sprintf  0x00000000       0x20 obj/sram_printf.o
+ .data          0x00000000        0x0 /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/libgcc.a(_thumb1_case_uqi.o)
+ .bss           0x00000000        0x0 /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/libgcc.a(_thumb1_case_uqi.o)
+ .data          0x00000000        0x0 /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/libgcc.a(_udivsi3.o)
+ .bss           0x00000000        0x0 /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/libgcc.a(_udivsi3.o)
+ .data          0x00000000        0x0 /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/libgcc.a(_dvmd_tls.o)
+ .bss           0x00000000        0x0 /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/libgcc.a(_dvmd_tls.o)
+ .text          0x00000000        0x0 /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/crtend.o
+ .data          0x00000000        0x0 /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/crtend.o
+ .bss           0x00000000        0x0 /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/crtend.o
+ .jcr           0x00000000        0x4 /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/crtend.o
+ .text          0x00000000        0x0 /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/crtn.o
+ .data          0x00000000        0x0 /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/crtn.o
+ .bss           0x00000000        0x0 /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/crtn.o
+ .init          0x00000000        0xc /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/crtn.o
+ .fini          0x00000000        0xc /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+sram0            0x00200000         0x00004000         w !xr
+romcodesram      0x00300000         0x00002000         w !xr
+sram1            0x00302000         0x00002000         w !xr
+sdram            0x20000000         0x04000000         w !xr
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/crti.o
+LOAD /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/crtbegin.o
+LOAD obj/sram_isp_cstartup.o
+LOAD obj/sram_main.o
+LOAD obj/sram_board_memories.o
+LOAD obj/sram_board_lowlevel.o
+LOAD obj/sram_dbgu.o
+LOAD obj/sram_pio.o
+LOAD obj/sram_cp15.o
+LOAD obj/sram_printf.o
+START GROUP
+LOAD /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/libgcc.a
+LOAD /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/lib/libc.a
+END GROUP
+LOAD /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/crtend.o
+LOAD /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/crtn.o
+
+.fixed0         0x00200000      0xa44
+                0x00200000                . = ALIGN (0x4)
+                0x00200000                _sfixed0 = .
+ *(.vectors)
+ *(.ramfunc)
+ *(.text*)
+ .text          0x00200000       0xf0 obj/sram_isp_cstartup.o
+                0x00200000                entry
+ .text.main     0x002000f0      0x130 obj/sram_main.o
+                0x002000f0                main
+ .text.BOARD_RemapRam
+                0x00200220        0xc obj/sram_board_memories.o
+                0x00200220                BOARD_RemapRam
+ .text.BOARD_ConfigureSdram
+                0x0020022c       0xe8 obj/sram_board_memories.o
+                0x0020022c                BOARD_ConfigureSdram
+ .text.defaultSpuriousHandler
+                0x00200314        0x4 obj/sram_board_lowlevel.o
+                0x00200314                defaultSpuriousHandler
+ .text.defaultFiqHandler
+                0x00200318        0x4 obj/sram_board_lowlevel.o
+                0x00200318                defaultFiqHandler
+ .text.defaultIrqHandler
+                0x0020031c        0x4 obj/sram_board_lowlevel.o
+                0x0020031c                defaultIrqHandler
+ .text.LowLevelInit
+                0x00200320       0xf0 obj/sram_board_lowlevel.o
+                0x00200320                LowLevelInit
+ .text.DBGU_Configure
+                0x00200410       0x40 obj/sram_dbgu.o
+                0x00200410                DBGU_Configure
+ .text.DBGU_PutChar
+                0x00200450       0x20 obj/sram_dbgu.o
+                0x00200450                DBGU_PutChar
+ .text.PIO_Configure
+                0x00200470       0xb8 obj/sram_pio.o
+                0x00200470                PIO_Configure
+ .text.printchar
+                0x00200528       0x2c obj/sram_printf.o
+ .text.prints   0x00200554       0x80 obj/sram_printf.o
+ .text.printi   0x002005d4       0xcc obj/sram_printf.o
+ .text.print    0x002006a0      0x114 obj/sram_printf.o
+ .text.printf   0x002007b4       0x20 obj/sram_printf.o
+                0x002007b4                printf
+ .text          0x002007d4       0x14 /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/libgcc.a(_thumb1_case_uqi.o)
+                0x002007d4                __gnu_thumb1_case_uqi
+ .text          0x002007e8      0x114 /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/libgcc.a(_udivsi3.o)
+                0x002007e8                __udivsi3
+                0x002007e8                __aeabi_uidiv
+                0x002008dc                __aeabi_uidivmod
+ .text          0x002008fc        0x4 /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/libgcc.a(_dvmd_tls.o)
+                0x002008fc                __aeabi_ldiv0
+                0x002008fc                __aeabi_idiv0
+ *(.rodata*)
+ .rodata        0x00200900        0xc obj/sram_main.o
+ .rodata.str1.1
+                0x0020090c      0x115 obj/sram_main.o
+ *fill*         0x00200a21        0x3 00
+ .rodata        0x00200a24       0x18 obj/sram_board_memories.o
+ .rodata.str1.1
+                0x00200a3c        0x7 obj/sram_printf.o
+ *(.data)
+ *(.glue_7)
+ .glue_7        0x00000000        0x0 linker stubs
+ *(.glue_7t)
+ .glue_7t       0x00000000        0x0 linker stubs
+ *(.CP15_*)
+                0x00200a44                . = ALIGN (0x4)
+ *fill*         0x00200a43        0x1 00
+                0x00200a44                _efixed0 = .
+                0x00200a44                _efixed = .
+
+.vfp11_veneer   0x00200a44        0x0
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+
+.v4_bx          0x00200a44        0x0
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.fixed1         0x00200a44        0x0
+                0x00200a44                . = ALIGN (0x4)
+                0x00200a44                _sfixed1 = .
+                0x00200a44                . = ALIGN (0x4)
+                0x00200a44                _efixed1 = .
+
+.prerelocate    0x00000000        0x0 load address 0x00200a44
+                0x00000000                . = ALIGN (0x4)
+                0x00000000                _sprerelocate = .
+                0x00000000                . = ALIGN (0x4)
+                0x00000000                _eprerelocate = .
+
+.postrelocate   0x00000000        0x0 load address 0x00200a44
+                0x00000000                . = ALIGN (0x4)
+                0x00000000                _spostrelocate = .
+                0x00000000                . = ALIGN (0x4)
+                0x00000000                _epostrelocate = .
+
+.bss            0x00200a44        0x0
+                0x00200a44                _szero = .
+ *(.bss)
+                0x00200a44                . = ALIGN (0x4)
+                0x00200a44                _ezero = .
+                0x00204000                _sstack = 0x204000
+                0x00200a44                end = .
+OUTPUT(bin/AC-memtest-address.elf elf32-littlearm)
+
+.ARM.attributes
+                0x00000000       0x30
+ .ARM.attributes
+                0x00000000       0x16 /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/crti.o
+ .ARM.attributes
+                0x00000016       0x34 /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/crtbegin.o
+ .ARM.attributes
+                0x0000004a       0x18 obj/sram_isp_cstartup.o
+ .ARM.attributes
+                0x00000062       0x34 obj/sram_main.o
+ .ARM.attributes
+                0x00000096       0x34 obj/sram_board_memories.o
+ .ARM.attributes
+                0x000000ca       0x34 obj/sram_board_lowlevel.o
+ .ARM.attributes
+                0x000000fe       0x34 obj/sram_dbgu.o
+ .ARM.attributes
+                0x00000132       0x34 obj/sram_pio.o
+ .ARM.attributes
+                0x00000166       0x34 obj/sram_cp15.o
+ .ARM.attributes
+                0x0000019a       0x34 obj/sram_printf.o
+ .ARM.attributes
+                0x000001ce       0x18 /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/libgcc.a(_thumb1_case_uqi.o)
+ .ARM.attributes
+                0x000001e6       0x1a /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/libgcc.a(_udivsi3.o)
+ .ARM.attributes
+                0x00000200       0x18 /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/libgcc.a(_dvmd_tls.o)
+ .ARM.attributes
+                0x00000218       0x34 /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/crtend.o
+ .ARM.attributes
+                0x0000024c       0x18 /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/crtn.o
+
+.comment        0x00000000       0x2a
+ .comment       0x00000000       0x2a obj/sram_main.o
+                                 0x2b (size before relaxing)
+ .comment       0x00000000       0x2b obj/sram_board_memories.o
+ .comment       0x00000000       0x2b obj/sram_board_lowlevel.o
+ .comment       0x00000000       0x2b obj/sram_dbgu.o
+ .comment       0x00000000       0x2b obj/sram_pio.o
+ .comment       0x00000000       0x2b obj/sram_cp15.o
+ .comment       0x00000000       0x2b obj/sram_printf.o
+
+.debug_line     0x00000000      0x9a9
+ .debug_line    0x00000000       0x60 obj/sram_isp_cstartup.o
+ .debug_line    0x00000060       0xd5 obj/sram_main.o
+ .debug_line    0x00000135      0x1f2 obj/sram_board_memories.o
+ .debug_line    0x00000327      0x10e obj/sram_board_lowlevel.o
+ .debug_line    0x00000435       0xe2 obj/sram_dbgu.o
+ .debug_line    0x00000517      0x137 obj/sram_pio.o
+ .debug_line    0x0000064e      0x1c4 obj/sram_cp15.o
+ .debug_line    0x00000812      0x197 obj/sram_printf.o
+
+.debug_info     0x00000000     0x2538
+ .debug_info    0x00000000       0x64 obj/sram_isp_cstartup.o
+ .debug_info    0x00000064      0x538 obj/sram_main.o
+ .debug_info    0x0000059c      0xaa3 obj/sram_board_memories.o
+ .debug_info    0x0000103f      0x505 obj/sram_board_lowlevel.o
+ .debug_info    0x00001544      0x297 obj/sram_dbgu.o
+ .debug_info    0x000017db      0x77c obj/sram_pio.o
+ .debug_info    0x00001f57      0x29c obj/sram_cp15.o
+ .debug_info    0x000021f3      0x345 obj/sram_printf.o
+
+.debug_abbrev   0x00000000      0x886
+ .debug_abbrev  0x00000000       0x14 obj/sram_isp_cstartup.o
+ .debug_abbrev  0x00000014      0x1d3 obj/sram_main.o
+ .debug_abbrev  0x000001e7      0x16c obj/sram_board_memories.o
+ .debug_abbrev  0x00000353       0xb8 obj/sram_board_lowlevel.o
+ .debug_abbrev  0x0000040b       0xe0 obj/sram_dbgu.o
+ .debug_abbrev  0x000004eb      0x18b obj/sram_pio.o
+ .debug_abbrev  0x00000676       0xc6 obj/sram_cp15.o
+ .debug_abbrev  0x0000073c      0x14a obj/sram_printf.o
+
+.debug_aranges  0x00000000      0x208
+ .debug_aranges
+                0x00000000       0x20 obj/sram_isp_cstartup.o
+ .debug_aranges
+                0x00000020       0x20 obj/sram_main.o
+ .debug_aranges
+                0x00000040       0x58 obj/sram_board_memories.o
+ .debug_aranges
+                0x00000098       0x38 obj/sram_board_lowlevel.o
+ .debug_aranges
+                0x000000d0       0x38 obj/sram_dbgu.o
+ .debug_aranges
+                0x00000108       0x40 obj/sram_pio.o
+ .debug_aranges
+                0x00000148       0x78 obj/sram_cp15.o
+ .debug_aranges
+                0x000001c0       0x48 obj/sram_printf.o
+
+.debug_loc      0x00000000     0x109e
+ .debug_loc     0x00000000      0x104 obj/sram_main.o
+ .debug_loc     0x00000104      0x1ea obj/sram_board_memories.o
+ .debug_loc     0x000002ee       0xf4 obj/sram_board_lowlevel.o
+ .debug_loc     0x000003e2       0xb1 obj/sram_dbgu.o
+ .debug_loc     0x00000493      0x1e4 obj/sram_pio.o
+ .debug_loc     0x00000677      0x376 obj/sram_cp15.o
+ .debug_loc     0x000009ed      0x6b1 obj/sram_printf.o
+
+.debug_pubnames
+                0x00000000      0x374
+ .debug_pubnames
+                0x00000000       0x1b obj/sram_main.o
+ .debug_pubnames
+                0x0000001b       0xeb obj/sram_board_memories.o
+ .debug_pubnames
+                0x00000106       0x6a obj/sram_board_lowlevel.o
+ .debug_pubnames
+                0x00000170       0x5a obj/sram_dbgu.o
+ .debug_pubnames
+                0x000001ca       0x66 obj/sram_pio.o
+ .debug_pubnames
+                0x00000230      0x11b obj/sram_cp15.o
+ .debug_pubnames
+                0x0000034b       0x29 obj/sram_printf.o
+
+.debug_pubtypes
+                0x00000000      0x279
+ .debug_pubtypes
+                0x00000000       0x66 obj/sram_main.o
+ .debug_pubtypes
+                0x00000066       0xcc obj/sram_board_memories.o
+ .debug_pubtypes
+                0x00000132       0xae obj/sram_board_lowlevel.o
+ .debug_pubtypes
+                0x000001e0       0x32 obj/sram_dbgu.o
+ .debug_pubtypes
+                0x00000212       0x55 obj/sram_pio.o
+ .debug_pubtypes
+                0x00000267       0x12 obj/sram_cp15.o
+
+.debug_ranges   0x00000000      0x178
+ .debug_ranges  0x00000000       0x10 obj/sram_main.o
+ .debug_ranges  0x00000010       0x48 obj/sram_board_memories.o
+ .debug_ranges  0x00000058       0x28 obj/sram_board_lowlevel.o
+ .debug_ranges  0x00000080       0x28 obj/sram_dbgu.o
+ .debug_ranges  0x000000a8       0x30 obj/sram_pio.o
+ .debug_ranges  0x000000d8       0x68 obj/sram_cp15.o
+ .debug_ranges  0x00000140       0x38 obj/sram_printf.o
+
+.debug_str      0x00000000      0xd7b
+ .debug_str     0x00000000      0x27e obj/sram_main.o
+                                0x2c8 (size before relaxing)
+ .debug_str     0x0000027e      0x4b5 obj/sram_board_memories.o
+                                0x67e (size before relaxing)
+ .debug_str     0x00000733      0x28d obj/sram_board_lowlevel.o
+                                0x309 (size before relaxing)
+ .debug_str     0x000009c0      0x14e obj/sram_dbgu.o
+                                0x1ac (size before relaxing)
+ .debug_str     0x00000b0e       0xde obj/sram_pio.o
+                                0x33c (size before relaxing)
+ .debug_str     0x00000bec      0x11b obj/sram_cp15.o
+                                0x1d3 (size before relaxing)
+ .debug_str     0x00000d07       0x74 obj/sram_printf.o
+                                 0xbc (size before relaxing)
+
+.debug_frame    0x00000000      0x464
+ .debug_frame   0x00000000       0x30 obj/sram_main.o
+ .debug_frame   0x00000030       0xc8 obj/sram_board_memories.o
+ .debug_frame   0x000000f8       0x70 obj/sram_board_lowlevel.o
+ .debug_frame   0x00000168       0x6c obj/sram_dbgu.o
+ .debug_frame   0x000001d4       0x78 obj/sram_pio.o
+ .debug_frame   0x0000024c      0x134 obj/sram_cp15.o
+ .debug_frame   0x00000380       0xc4 obj/sram_printf.o
+ .debug_frame   0x00000444       0x20 /home/davidp/tools/arm-2011.03/bin/../lib/gcc/arm-none-eabi/4.5.2/libgcc.a(_udivsi3.o)

@@ -1,0 +1,231 @@
+/* 
+ *  Driver for ADC on the LUX9
+ *
+ *  Copyright (R) 2010 - Claudio Mignanti
+ *  Based on http://www.at91.com/forum/viewtopic.php/p,9409/#p9409
+ *
+ *  2010/05/18 Antonio Galea
+ *    Sysfs device model, different drivers integration
+ *  2012/11/10 David Pristovnik
+ *    LUX9 Board customization, bug fix
+ *
+ *  WISHLIST:
+ *  - concurrent access control
+ *  - add support for dynamic reconfiguration
+ *  - hardware triggers
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as  published by 
+ *  the Free Software Foundation.
+ *
+ * $Id$
+ * ---------------------------------------------------------------------------
+*/
+
+#include <linux/module.h>
+#include <linux/kernel.h>
+#include <linux/init.h>
+#include <linux/clk.h>
+#include <linux/platform_device.h>
+#include <mach/gpio.h>
+#include <asm/io.h>
+#include <linux/fs.h>
+#include <linux/cdev.h>
+
+#include "at91_adc.h"
+
+
+static void at91_adc_device_release(struct device *dev){}
+struct platform_device at91_adc_device = {
+  .name          = "at91_adc",
+  .id            = -1,
+  .dev.release   = at91_adc_device_release,
+};
+struct clk          *at91_adc_clk;
+void __iomem        *at91_adc_base;
+static struct cdev  *at91_adc_cdev  = NULL;
+static dev_t         at91_adc_devno = 0;
+static struct class *at91_adc_class = NULL;
+#define DRV_CLASS   "at91_adc"
+#define ADC_READ    1
+
+
+//////////////////////////////////////////////////////
+// Device functions
+//////////////////////////////////////////////////////
+#define at91_adc_read(reg)        ioread32(at91_adc_base + (reg))
+#define at91_adc_write(reg, val)  iowrite32((val), at91_adc_base + (reg))
+#define AT91_DEFAULT_CONFIG       AT91_ADC_SHTIM   | \
+                                  AT91_ADC_STARTUP | \
+                                  AT91_ADC_PRESCAL | \
+                                  AT91_ADC_SLEEP
+
+static int at91_adc_read_chan(int chan){
+  int val, sr;
+  if(chan<0 || chan>3){ return -EINVAL; }
+  at91_adc_write(AT91_ADC_CHER,AT91_ADC_CH(chan));      //Enable Channel
+  at91_adc_write(AT91_ADC_CR,AT91_ADC_START);           //Start the ADC
+  for(sr=0; !(sr & AT91_ADC_EOC(chan)); sr=at91_adc_read(AT91_ADC_SR))
+    cpu_relax();
+  val=at91_adc_read(AT91_ADC_CDR(chan)) & AT91_ADC_DATA; //Read up to 10 bits
+  return val;
+}
+
+static int at91_adc_config(int requested_config){
+  int actual_config;
+  at91_adc_write(AT91_ADC_CR,AT91_ADC_SWRST);   //Reset the ADC
+  at91_adc_write(AT91_ADC_MR,requested_config); //Mode setup
+  actual_config = at91_adc_read(AT91_ADC_MR);   //Read it back
+  return (requested_config==actual_config? 0: -EINVAL);
+}
+
+//////////////////////////////////////////////////////
+// Sysfs interface
+//////////////////////////////////////////////////////
+static ssize_t at91_adc_chanX_show(
+  struct device *dev, struct device_attribute *attr, char *buf
+){
+  ssize_t status = 0;
+  int     chan = -1;
+  int     value;
+  if(strlen(attr->attr.name)==5 && strncmp(attr->attr.name,"chan",4)==0){
+    chan = attr->attr.name[4]-'0';
+  }
+  if(chan<0 || chan>3){ return -EIO; }
+  value  = at91_adc_read_chan(chan);
+  status = sprintf(buf, "%d\n", value);
+  return status;
+}
+
+static DEVICE_ATTR(chan0, 0444, at91_adc_chanX_show, NULL);
+static DEVICE_ATTR(chan1, 0444, at91_adc_chanX_show, NULL);
+static DEVICE_ATTR(chan2, 0444, at91_adc_chanX_show, NULL);
+static DEVICE_ATTR(chan3, 0444, at91_adc_chanX_show, NULL);
+static const struct attribute *at91_adc_dev_attrs[] = {
+  &dev_attr_chan0.attr,
+  &dev_attr_chan1.attr,
+  &dev_attr_chan2.attr,
+  &dev_attr_chan3.attr,
+  NULL,
+};
+static const struct attribute_group at91_adc_dev_attr_group = {
+  .attrs = (struct attribute **) at91_adc_dev_attrs,
+};
+
+//////////////////////////////////////////////////////
+// IOCTL interface
+//////////////////////////////////////////////////////
+static int at91_adc_ioctl(
+  struct inode *inode, struct file *file, unsigned int cmd, unsigned long arg
+){
+  int retval = 0;
+  switch (cmd) {
+    case ADC_READ:
+      return at91_adc_read_chan((int)arg);
+      break;
+    default:
+      retval = -EINVAL;
+  }
+  return retval;
+}
+struct file_operations at91_adc_fops = {
+  .owner = THIS_MODULE,
+  .ioctl = at91_adc_ioctl,
+};
+
+static void at91_adc_cdev_teardown(void){
+  if(at91_adc_class){
+    device_destroy(at91_adc_class, at91_adc_devno);
+    class_destroy(at91_adc_class);
+  }
+  if(at91_adc_devno){
+    unregister_chrdev_region(at91_adc_devno,1);
+    if(at91_adc_cdev){ cdev_del(at91_adc_cdev); }
+  }
+  at91_adc_devno = 0;
+  at91_adc_cdev  = NULL;
+  at91_adc_class = NULL;
+  return;
+}
+
+static int at91_adc_cdev_setup(void){
+  int status;
+  /* alloc a new device number (major: dynamic, minor: 0) */
+  status = alloc_chrdev_region(&at91_adc_devno,0,1,at91_adc_device.name);
+  if(status){ goto err; }
+  /* create a new char device */
+  at91_adc_cdev = cdev_alloc();
+  if(at91_adc_cdev == NULL){ status=-ENOMEM; goto err; }
+  at91_adc_cdev->owner = THIS_MODULE;
+  at91_adc_cdev->ops   = &at91_adc_fops;
+  status = cdev_add(at91_adc_cdev,at91_adc_devno,1);
+  if(status){ goto err; }
+  /* register the class */
+  at91_adc_class = class_create(THIS_MODULE, DRV_CLASS);
+  if(IS_ERR(at91_adc_class)){ status=-EFAULT; goto err; }
+  device_create(at91_adc_class, NULL, at91_adc_devno, NULL, at91_adc_device.name);
+  printk(KERN_INFO "Major: %u; minor: %u\n", \
+    MAJOR(at91_adc_devno), MINOR(at91_adc_devno) \
+  );
+  return 0;
+
+err:
+  at91_adc_cdev_teardown();
+  return status;
+}
+
+//////////////////////////////////////////////////////
+// Module init/exit
+//////////////////////////////////////////////////////
+static int __init at91_adc_init(void){
+  int status;
+  at91_adc_clk = clk_get(NULL,"adc_clk");
+  clk_enable(at91_adc_clk);
+  at91_adc_base = ioremap(AT91SAM9260_BASE_ADC,SZ_256);
+  if(!at91_adc_base){ status=-ENODEV; goto fail_no_iomem; }
+  status = platform_device_register(&at91_adc_device);
+  if(status){ goto fail_no_dev; }
+  status = at91_adc_config(AT91_DEFAULT_CONFIG);
+  if(status){ goto fail_no_config; }
+  status = sysfs_create_group(
+    &(at91_adc_device.dev.kobj), &at91_adc_dev_attr_group
+  );
+  if(status){ goto fail_no_sysfs; }
+  status = at91_adc_cdev_setup();
+  if(status){ goto fail_no_cdev; }
+  printk(KERN_INFO "Registered device at91_adc.\n");
+  return 0;
+
+fail_no_cdev:
+  // nothing to undo
+fail_no_sysfs:
+  // nothing to undo
+fail_no_config:
+  platform_device_unregister(&at91_adc_device);
+fail_no_dev:
+  iounmap(at91_adc_base);
+fail_no_iomem:
+  clk_disable(at91_adc_clk);
+  clk_put(at91_adc_clk);
+  return status;
+}
+
+static void __exit at91_adc_exit(void){
+  at91_adc_cdev_teardown();
+  platform_device_unregister(&at91_adc_device);
+  iounmap(at91_adc_base);
+  clk_disable(at91_adc_clk);
+  clk_put(at91_adc_clk);
+  printk(KERN_INFO "Unregistered device at91_adc.\n");
+}
+
+module_init(at91_adc_init);
+module_exit(at91_adc_exit);
+
+MODULE_AUTHOR("Paul Kavan");
+MODULE_AUTHOR("Claudio Mignanti");
+MODULE_AUTHOR("Antonio Galea");
+MODULE_AUTHOR("Stefano Barbato");
+MODULE_AUTHOR("David Pristovnik");
+MODULE_DESCRIPTION("ADC Driver for the LUX9");
+MODULE_LICENSE("GPL");

@@ -1,0 +1,6 @@
+all: lux-sf9
+
+lux-sf9:
+	make CHIP=at91sam9260   BOARD=lux-sf9   ORIGIN=dataflash   DESTINATION=sdram   BIN_SIZE=0x30000   FROM_ADDR=0x8400   DEST_ADDR=0x23F00000   OP_BOOTSTRAP=on     STR_DESCR=\\\"appli\\\" TRACE_LEVEL=0 clean all
+	make CHIP=at91sam9260   BOARD=lux-sf9   ORIGIN=nandflash   DESTINATION=sdram   BIN_SIZE=0x30000   FROM_ADDR=0x20000   DEST_ADDR=0x23F00000   OP_BOOTSTRAP=on     STR_DESCR=\\\"appli\\\" TRACE_LEVEL=0 clean all
+	make CHIP=at91sam9260   BOARD=lux-sf9   ORIGIN=norflash   DESTINATION=sdram   BIN_SIZE=0x30000   FROM_ADDR=0x4000   DEST_ADDR=0x23F00000   STR_DESCR=\\\"appli\\\" TRACE_LEVEL=0 clean all
